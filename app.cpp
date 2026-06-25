@@ -23,7 +23,8 @@ class Functions {
         vector<string> blogIndex; 
         unordered_map<string, vector<int>> keywords;
         unordered_map<string, int> fileIndex;
-        string folderPath= getenv("FOLDER_PATH");
+        const char* folderEnv = getenv("FOLDER_PATH");
+        string folderPath = folderEnv;
     public:
         Functions() {
             string l;
@@ -192,7 +193,7 @@ int main() {
         x["bool"]= obj.updateBlog(body["title"].s(), body["text"].s());
         return x;
     });
-    string Port_= getenv("PORT");
-    int Port= (int) Port_;
+    const char* portEnv = getenv("PORT");
+    int Port = std::stoi(portEnv);
     app.port(Port).multithreaded().run();
 }
