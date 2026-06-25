@@ -58,7 +58,7 @@ async function broadSearch() {
     document.getElementById("search").value= "";
     if (data.blogs.length>0) {
         for (let i=0; i<data.blogs.length; i++) {
-            blogss.innerHTML+= `<a href= /readBlog?query=${data.blogs[i]}>${data.blogs[i]}</a><br>`;
+            blogss.innerHTML += `<a href="/readBlog?query=${encodeURIComponent(data.blogs[i])}">${data.blogs[i]}</a><br>`;
         }
     }
     else {
@@ -77,7 +77,7 @@ async function narrowSearch() {
     blogss.innerHTML= "";
     document.getElementById("search").value= "";
     if (data.blogs!="") {
-        blogss.innerHTML= `<a href= /readBlog?query=${data.blogs}>${data.blogs}</a><br>`;
+        blogss.innerHTML += `<a href="/readBlog?query=${encodeURIComponent(data.blogs[i])}">${data.blogs[i]}</a><br>`;
     }
     else {
         blogss.innerHTML= "No Blogs Found";
@@ -91,7 +91,7 @@ window.onload= async()=>{
     const blogsDiv= document.getElementById("blogs");
     if (blogsDiv) {
         for (let i=0; i<data.blogs.length; i++) {
-            blogsDiv.innerHTML+= `<a href= /readBlog?query=${data.blogs[i]}>${data.blogs[i]}</a><br>`;
+            blogsDiv.innerHTML += `<a href="/readBlog?query=${encodeURIComponent(data.blogs[i])}">${data.blogs[i]}</a><br>`;
         }
         const addButton= document.getElementById("add");
         if (addButton) {
